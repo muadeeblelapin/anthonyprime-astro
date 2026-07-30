@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import Hero from "../components/Hero.astro"
+import TrustBar from "../components/TrustBar.astro"
+import Services from "../components/Services.astro"
+import Zone from "../components/Zone.astro"
+---
+<BaseLayout title="Anthony PRIME — Plombier Chauffagiste Électricien à Saint-James (50)" description="Anthony PRIME : artisan plombier, chauffagiste et électricien à Saint-James (50240). Dépannage rapide, installation pompe à chaleur, mise aux normes électriques dans le Sud-Manche et l'Ille-et-Vilaine.">
+  <Fragment slot="header"><Header /></Fragment>
+  <Hero title="Anthony PRIME : Plomberie, Chauffage et Électricité à Saint-James" tagline="Artisan RGE — devis gratuit — intervention rapide dans un rayon de 30 km." />
+  <TrustBar />
+  <Services />
+  <Zone />
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":["Plumber","LocalBusiness"],"name":"Anthony PRIME","image":"https://www.anthonyprime.fr/og-image.jpg","url":"https://www.anthonyprime.fr","telephone":"+33674981599","email":"anthonyprimelec@gmail.com","description":"Plombier, chauffagiste et électricien à Saint-James (50240). Dépannage rapide, installation pompe à chaleur, mise aux normes électriques dans le Sud-Manche et l'Ille-et-Vilaine.","areaServed":["Avranches","Ducey","Pontorson","Fougères","Saint-Hilaire-du-Harcouët","Pontaubault","Antrain","Saint-James"],"priceRange":"€€","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"20:00"},"address":{"@type":"PostalAddress","addressLocality":"Saint-James","addressRegion":"Normandie","postalCode":"50240","addressCountry":"FR"}})} />
+</BaseLayout>

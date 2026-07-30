@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+---
+<BaseLayout title="404 — Page non trouvée | Anthony PRIME" description="Page introuvable. Retournez à l'accueil du site d'Anthony PRIME." path="/404">
+  <Fragment slot="header"><Header /></Fragment>
+  <section class="py-32 bg-background"><div class="container text-center max-w-xl">
+    <h1 class="text-8xl font-black text-primary mb-4">404</h1>
+    <p class="text-2xl font-bold mb-4">Page non trouvée</p>
+    <p class="text-muted-foreground mb-8">La page que vous cherchez n'existe pas ou a été déplacée.</p>
+    <a href="/" class="inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-8 py-4 font-extrabold hover:brightness-110 transition">Retour à l'accueil</a>
+  </div></section>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

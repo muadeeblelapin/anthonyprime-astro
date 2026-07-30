@@ -1,0 +1,58 @@
+---
+import { SERVICES, ICON_MAP } from "../lib/services"
+
+const mainServices = [
+  { slug: "plomberie", icon: "droplets", title: "Plomberie", desc: "Rénovation de salle de bain, recherche de fuite, sanitaires, raccordements." },
+  { slug: "chauffage", icon: "flame", title: "Chauffage", desc: "Installation et entretien de pompes à chaleur et chaudières (gaz, fioul, bois)." },
+  { slug: "electricite", icon: "zap", title: "Électricité", desc: "Mise en conformité, dépannage électrique, tableau, prises et éclairage." },
+  { slug: "depannage-urgence", icon: "wrench", title: "Dépannage d'urgence", desc: "Intervention rapide sur fuite, panne de chauffage ou coupure électrique." },
+]
+
+const ecoServices = [
+  { slug: "pompe-a-chaleur", icon: "thermometer", title: "Pompe à chaleur", desc: "Installation et entretien de PAC air/eau et air/air, éligibles aux aides." },
+  { slug: "aerothermie", icon: "snowflake", title: "Aérothermie", desc: "Captez l'énergie de l'air pour chauffer votre maison." },
+  { slug: "geothermie", icon: "mountain", title: "Géothermie", desc: "Une chaleur stable et durable issue du sol." },
+  { slug: "climatisation", icon: "wind", title: "Climatisation réversible", desc: "Fraîcheur l'été, chauffage d'appoint l'hiver. Jusqu'à 4x plus économique qu'un radiateur." },
+  { slug: "renovation-salle-de-bains", icon: "bath", title: "Rénovation salle de bains", desc: "Conception sur-mesure et travaux clé en main." },
+]
+---
+
+<section id="services" class="py-20 md:py-28 bg-background">
+  <div class="container">
+    <div class="max-w-2xl mb-14">
+      <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Nos prestations</p>
+      <h2 class="text-3xl md:text-5xl text-foreground">Un artisan, tous vos besoins techniques</h2>
+      <p class="mt-4 text-muted-foreground text-lg">De la rénovation complète au dépannage urgent, Anthony PRIME intervient chez vous avec professionnalisme.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {mainServices.map(s => (
+        <a href={`/services/${s.slug}`} class="group rounded-2xl border border-border bg-card p-7 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 block">
+          <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-primary-foreground mb-5 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
+          </div>
+          <h3 class="text-xl text-card-foreground mb-2">{s.title}</h3>
+          <p class="text-muted-foreground leading-relaxed">{s.desc}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-20">
+      <h2 class="text-2xl md:text-3xl mb-8">Spécialités énergies renouvelables et rénovation</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {ecoServices.map(s => (
+          <a href={`/services/${s.slug}`} class="group rounded-2xl border border-border bg-card p-7 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 flex flex-col">
+            <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-secondary-foreground mb-5 group-hover:scale-110 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
+            </div>
+            <h3 class="text-lg text-card-foreground mb-2">{s.title}</h3>
+            <p class="text-muted-foreground leading-relaxed text-sm flex-1">{s.desc}</p>
+            <span class="mt-4 inline-flex items-center gap-1 font-bold text-primary group-hover:gap-2 transition-all">
+              En savoir plus
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
