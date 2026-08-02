@@ -1,88 +1,455 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://anthonyprime.fr/</loc>
-    <priority>1.0</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://anthonyprime.fr/services/plomberie</loc>
+1|<?xml version="1.0" encoding="UTF-8"?>
+2|<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+3|  <url>
+4|    <loc>https://www.anthonyprime.fr/</loc>
+5|    <priority>1.0</priority>
+6|    <changefreq>monthly</changefreq>
+7|  </url>
+8|  <url>
+9|    <loc>https://www.anthonyprime.fr/services/plomberie</loc>
+10|    <priority>0.8</priority>
+11|    <changefreq>monthly</changefreq>
+12|  </url>
+13|  <url>
+14|    <loc>https://www.anthonyprime.fr/services/chauffage</loc>
+15|    <priority>0.8</priority>
+16|    <changefreq>monthly</changefreq>
+17|  </url>
+18|  <url>
+19|    <loc>https://www.anthonyprime.fr/services/electricite</loc>
+20|    <priority>0.8</priority>
+21|    <changefreq>monthly</changefreq>
+22|  </url>
+23|  <url>
+24|    <loc>https://www.anthonyprime.fr/services/depannage-urgence</loc>
+25|    <priority>0.8</priority>
+26|    <changefreq>monthly</changefreq>
+27|  </url>
+28|  <url>
+29|    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur</loc>
+30|    <priority>0.9</priority>
+31|    <changefreq>monthly</changefreq>
+32|  </url>
+33|  <url>
+34|    <loc>https://www.anthonyprime.fr/services/climatisation</loc>
+35|    <priority>0.9</priority>
+36|    <changefreq>monthly</changefreq>
+37|  </url>
+38|  <url>
+39|    <loc>https://www.anthonyprime.fr/services/aerothermie</loc>
+40|    <priority>0.8</priority>
+41|    <changefreq>monthly</changefreq>
+42|  </url>
+43|  <url>
+44|    <loc>https://www.anthonyprime.fr/services/geothermie</loc>
+45|    <priority>0.8</priority>
+46|    <changefreq>monthly</changefreq>
+47|  </url>
+48|  <url>
+49|      <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/chauffage</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains</loc>
+50|    <priority>0.8</priority>
+51|    <changefreq>monthly</changefreq>
+52|  </url>
+53|  <url>
+54|    <loc>https://www.anthonyprime.fr/plombier-avranches</loc>
+55|    <priority>0.6</priority>
+56|    <changefreq>monthly</changefreq>
+57|  </url>
+58|  <url>
+59|    <loc>https://www.anthonyprime.fr/plombier-ducey</loc>
+60|    <priority>0.6</priority>
+61|    <changefreq>monthly</changefreq>
+62|  </url>
+63|  <url>
+64|    <loc>https://www.anthonyprime.fr/plombier-pontorson</loc>
+65|    <priority>0.6</priority>
+66|    <changefreq>monthly</changefreq>
+67|  </url>
+68|  <url>
+69|    <loc>https://www.anthonyprime.fr/plombier-fougeres</loc>
+70|    <priority>0.6</priority>
+71|    <changefreq>monthly</changefreq>
+72|  </url>
+73|  <url>
+74|    <loc>https://www.anthonyprime.fr/plombier-saint-hilaire-du-harcouet</loc>
+75|    <priority>0.6</priority>
+76|    <changefreq>monthly</changefreq>
+77|  </url>
+78|  <url>
+79|    <loc>https://www.anthonyprime.fr/plombier-pontaubault</loc>
+80|    <priority>0.6</priority>
+81|    <changefreq>monthly</changefreq>
+82|  </url>
+83|  <url>
+84|    <loc>https://www.anthonyprime.fr/plombier-antrain</loc>
+85|    <priority>0.6</priority>
+86|    <changefreq>monthly</changefreq>
+87|  </url>
+88|  <url>
+89|    <loc>https://www.anthonyprime.fr/plombier-granville</loc>
+90|    <priority>0.6</priority>
+91|    <changefreq>monthly</changefreq>
+92|  </url>
+93|  <url>
+94|    <loc>https://www.anthonyprime.fr/plombier-saint-georges-de-reintembault</loc>
+95|    <priority>0.6</priority>
+96|    <changefreq>monthly</changefreq>
+97|  </url>
+98|  <url>
+    <loc>https://www.anthonyprime.fr/services/climatisation/avranches</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/electricite</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/ducey</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/depannage-urgence</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/pontorson</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/pompe-a-chaleur</loc>
-    <priority>0.9</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/fougeres</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/climatisation</loc>
-    <priority>0.9</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/aerothermie</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/pontaubault</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/geothermie</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/antrain</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/services/renovation-salle-de-bains</loc>
-    <priority>0.8</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/granville</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/avranches</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/ducey</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/climatisation/saint-james</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/pontorson</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/chauffage/avranches</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/fougeres</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/chauffage/ducey</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/saint-hilaire-du-harcouet</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/chauffage/pontorson</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/pontaubault</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/chauffage/fougeres</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://anthonyprime.fr/interventions/antrain</loc>
-    <priority>0.6</priority>
+    <loc>https://www.anthonyprime.fr/services/chauffage/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/chauffage/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/chauffage/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/chauffage/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/chauffage/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/chauffage/saint-james</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/avranches</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/ducey</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/pontorson</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/fougeres</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/pompe-a-chaleur/saint-james</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/avranches</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/ducey</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/pontorson</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/fougeres</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/aerothermie/saint-james</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/avranches</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/ducey</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/pontorson</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/fougeres</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/geothermie/saint-james</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/avranches</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/ducey</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/pontorson</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/fougeres</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/renovation-salle-de-bains/saint-james</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/avranches</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/ducey</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/pontorson</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/fougeres</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/saint-hilaire-du-harcouet</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/pontaubault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/antrain</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/granville</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/saint-georges-de-reintembault</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.anthonyprime.fr/services/entretien-chaudieres/saint-james</loc>
+    <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
+99|

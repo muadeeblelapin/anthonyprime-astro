@@ -1,0 +1,93 @@
+---
+const testimonials = [
+  {
+    name: "Rémy Rault",
+    note: 5,
+    date: "Février 2026",
+    text: "Très satisfait de la prestation, j'avais un tuyau de plomberie en cuivre qui fuyait, il m'a remplacé la partie en mauvais état, avec un coût raisonnable et la réparation en moins d'une semaine. Je recommande !",
+    source: "Google",
+  },
+  {
+    name: "LudoLeLoup",
+    note: 5,
+    date: "Décembre 2018",
+    text: "Très pro et très sympathique. Je recommande !",
+    source: "PagesJaunes",
+  },
+]
+
+const avgNote = "4.4"
+const totalAvis = 9
+---
+
+<section class="py-20 bg-background">
+  <div class="container">
+    <div class="text-center mb-12">
+      <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Témoignages</p>
+      <h2 class="text-3xl md:text-4xl mb-4">Ce que disent nos clients</h2>
+      <p class="text-muted-foreground text-lg">
+        Note moyenne : <span class="font-bold text-foreground">{avgNote}</span>/5 — <span class="font-bold text-foreground">{totalAvis}</span> avis
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map(t => (
+        <div class="rounded-2xl border border-border bg-card p-6 shadow-elegant flex flex-col">
+          <div class="flex items-center gap-1 mb-3" aria-label={`${t.note} étoiles sur 5`}>
+            {Array.from({ length: 5 }, (_, i) => (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill={i < t.note ? "currentColor" : "none"}
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class={i < t.note ? "text-yellow-500" : "text-muted-foreground"}
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-muted-foreground italic leading-relaxed flex-1 mb-4">"{t.text}"</p>
+          <div class="flex items-center justify-between border-t border-border pt-4">
+            <span class="font-bold text-foreground">{t.name}</span>
+            <span class="text-xs text-muted-foreground">{t.date} · {t.source}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <a
+        href="https://search.google.com/local/writereview?placeid=ChIJkf4vBOZPCUgROc1us2U8Mls"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-primary font-bold hover:underline"
+      >
+        Laisser un avis sur Google →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Anthony PRIME",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": avgNote,
+    "bestRating": "5",
+    "ratingCount": totalAvis,
+  },
+  "review": testimonials.map(t => ({
+    "@type": "Review",
+    "reviewRating": { "@type": "Rating", "ratingValue": t.note, "bestRating": "5" },
+    "author": { "@type": "Person", "name": t.name },
+    "reviewBody": t.text,
+    "datePublished": t.date,
+  })),
+})} />

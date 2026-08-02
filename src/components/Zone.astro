@@ -1,15 +1,50 @@
 ---
 import { CITIES } from "../lib/cities"
+const SAINT_JAMES = { lat: 48.5233, lng: -1.3242 }
 ---
 <section id="zone" class="py-20 bg-muted">
   <div class="container">
     <div class="max-w-2xl mb-12">
       <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">LOCAL & RÉACTIF</p>
-      <h2 class="text-3xl md:text-4xl text-foreground">Zone d'intervention : 30 km autour de Saint-James</h2>
+      <h2 class="text-3xl md:text-4xl text-foreground">Zone d'intervention : 40 km autour de Saint-James</h2>
       <p class="mt-4 text-muted-foreground text-lg">Un artisan de proximité pour les particuliers et professionnels du Sud-Manche et de l'Ille-et-Vilaine.</p>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
       {CITIES.map(city => <a href={`/plombier-${city.slug}`} class="group rounded-xl border border-border bg-card p-5 hover:shadow-elegant hover:-translate-y-0.5 transition-all duration-200"><div class="flex items-center gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="font-bold text-sm text-card-foreground group-hover:text-primary transition">Plombier à {city.name}</span></div></a>)}
     </div>
+    <!-- Carte interactive -->
+    <div id="map" class="rounded-2xl overflow-hidden shadow-elegant" style="height: 400px; width: 100%;"></div>
+    <p class="mt-3 text-sm text-muted-foreground text-center">Le cercle représente un rayon de 40 km autour de Saint-James. Cliquez pour zoomer.</p>
   </div>
 </section>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script>
+(function(){
+var lat = 48.5233, lng = -1.3242, radius = 40000;
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+document.head.appendChild(link);
+var script = document.createElement('script');
+script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+script.onload = function(){
+  var map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  L.circle([lat, lng], {
+    radius: radius,
+    color: '#1a7a2e',
+    fillColor: '#1a7a2e',
+    fillOpacity: 0.12,
+    weight: 2,
+    dashArray: '6, 6'
+  }).addTo(map).bindPopup('Rayon de 40 km autour de Saint-James');
+  L.marker([lat, lng]).addTo(map).bindPopup('<strong>Anthony PRIME</strong><br>3, impasse de la Croix-Vincent<br>50240 Saint-James');
+  // Activer le zoom au clic
+  map.on('click', function(){ if(map.getMaxZoom() > map.getZoom()) map.scrollWheelZoom.enable(); });
+};
+document.body.appendChild(script);
+})();
+</script>

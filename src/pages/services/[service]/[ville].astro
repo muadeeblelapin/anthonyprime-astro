@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Header from "../../../components/Header.astro"
+import Footer from "../../../components/Footer.astro"
+import Hero from "../../../components/Hero.astro"
+import TrustBar from "../../../components/TrustBar.astro"
+import RealizationCard from "../../../components/RealizationCard.astro"
+import { getServiceCityCombinations } from "../../../lib/serviceCities"
+import { ICON_MAP, BRANDS } from "../../../lib/services"
+
+export async function getStaticPaths() {
+  return getServiceCityCombinations().map(sc => ({
+    params: { service: sc.service.slug, ville: sc.city.slug },
+    props: { sc },
+  }))
+}
+
+const { sc } = Astro.props
+const PHONE = "06 74 98 15 99"
+const TEL = "tel:+33674981599"
+const IconPath = ICON_MAP[sc.service.icon]
+
+// Filtrer les réalisations pertinentes pour cette ville (ou toutes si aucune)
+const cityRealisations = sc.service.realizations.filter(r =>
+  r.location.toLowerCase().includes(sc.city.name.toLowerCase())
+)
+const displayRealisations = cityRealisations.length > 0 ? cityRealisations : sc.service.realizations
+---
+
+<BaseLayout title={sc.title} description={sc.description} path={`/services/${sc.slug}`}>
+  <Fragment slot="header"><Header /></Fragment>
+  <Hero title={sc.h1} tagline={sc.service.tagline} emergency={sc.service.emergency} />
+  <TrustBar />
+  <section class="py-20 bg-background">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3 inline-flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={IconPath}/></svg>
+          {sc.service.name} à {sc.city.name}
+        </p>
+        <h1 class="text-3xl md:text-5xl mb-6">{sc.h1}</h1>
+        <p class="text-lg text-muted-foreground leading-relaxed mb-8" set:html={sc.service.description.replace(/\n/g, '<br/>')} />
+        <ul class="space-y-3 mb-10">
+          {sc.service.bullets.map(b => <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="text-foreground">{b}</span></li>)}
+        </ul>
+        <div class="text-center">
+          <a href={TEL} class="inline-flex items-center gap-3 rounded-xl bg-secondary px-8 py-5 text-lg font-extrabold text-secondary-foreground shadow-cta hover:brightness-105 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {PHONE}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-muted">
+    <div class="container">
+      <div class="max-w-2xl mb-12">
+        <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Réalisations</p>
+        <h2 class="text-3xl md:text-4xl text-foreground">Nos chantiers de {sc.service.name.toLowerCase()} à {sc.city.name}</h2>
+        <p class="mt-4 text-muted-foreground text-lg">Un aperçu de nos interventions dans le secteur.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {displayRealisations.map(r => <RealizationCard realization={r} />)}
+      </div>
+    </div>
+  </section>
+
+  {sc.service.showBrands && <section class="py-16 bg-background"><div class="container"><div class="max-w-2xl mb-8"><p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Marques partenaires</p><h2 class="text-2xl md:text-3xl">Des équipements de référence</h2></div><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">{BRANDS.map(b => <div class="rounded-xl border border-border bg-card px-5 py-6 text-center font-bold text-card-foreground hover:shadow-elegant transition">{b}</div>)}</div></div></section>}
+
+  {sc.service.showAids && <section class="py-20 bg-muted"><div class="container"><div class="max-w-3xl"><p class="text-primary font-bold uppercase tracking-wider text-sm mb-3 inline-flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Aides financières</p><h2 class="text-3xl md:text-4xl mb-5">Profitez de MaPrimeRénov' et des aides à la rénovation</h2><p class="text-muted-foreground text-lg mb-8">En tant qu'artisan RGE, Anthony PRIME vous permet de bénéficier des principales aides de l'État pour financer vos travaux d'économie d'énergie.</p></div><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{[{t:"MaPrimeRénov'",d:"Aide de l'État, calculée selon vos revenus et le gain énergétique."},{t:"CEE",d:"Certificats d'Économies d'Énergie : prime versée par les fournisseurs d'énergie."},{t:"TVA 5,5 %",d:"Taux réduit pour les travaux d'amélioration énergétique."}].map(a => <div class="rounded-2xl border border-border bg-card p-6 shadow-elegant"><h3 class="font-bold text-xl mb-2">{a.t}</h3><p class="text-sm text-muted-foreground">{a.d}</p></div>)}</div></div></section>}
+
+  {sc.service.forfaits && <section class="py-20 bg-background"><div class="container"><div class="max-w-2xl mb-12"><p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Forfaits</p><h2 class="text-3xl md:text-4xl text-foreground">Tarifs d'entretien {sc.service.name.toLowerCase()}</h2><p class="mt-4 text-muted-foreground text-lg">Prix hors pièces de rechange. Devis gratuit pour toute intervention.</p></div><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{sc.service.forfaits.map(f => <div class="rounded-2xl border border-border bg-card p-6 shadow-elegant flex flex-col"><div class="flex items-center justify-between mb-4"><h3 class="text-xl font-bold text-card-foreground">{f.name}</h3><span class="text-2xl font-black text-primary">{f.price}</span></div><p class="text-sm text-muted-foreground leading-relaxed flex-1">{f.desc}</p></div>)}</div></div></section>}
+
+  <section class="py-20 bg-muted" id="contact-form">
+    <div class="container max-w-2xl">
+      <div class="text-center mb-10">
+        <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Sans engagement</p>
+        <h2 class="text-3xl md:text-4xl">Un projet de {sc.service.name.toLowerCase()} à {sc.city.name} ?</h2>
+        <p class="mt-4 text-muted-foreground text-lg">Laissez-moi vos coordonnées, je vous contacte pour en discuter.</p>
+      </div>
+      <form action="/contact.php" method="POST" class="space-y-5">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="block text-sm font-bold mb-2">Nom et prénom</label>
+            <input type="text" id="name" name="name" required class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-bold mb-2">Téléphone</label>
+            <input type="tel" id="phone" name="phone" required class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="06 XX XX XX XX" />
+          </div>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-bold mb-2">Email</label>
+          <input type="email" id="email" name="email" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="votre@email.fr (optionnel)" />
+        </div>
+        <div>
+          <label for="equipment" class="block text-sm font-bold mb-2">Type de projet</label>
+          <select id="equipment" name="equipment" required class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="">Sélectionnez...</option>
+            <option value="installation">Installation</option>
+            <option value="remplacement">Remplacement</option>
+            <option value="entretien">Entretien / dépannage</option>
+            <option value="devis">Devis</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="city" class="block text-sm font-bold mb-2">Ville</label>
+            <input type="text" id="city" name="city" value={sc.city.name} class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label for="availability" class="block text-sm font-bold mb-2">Disponibilités</label>
+            <select id="availability" name="availability" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">À votre convenance</option>
+              <option value="matin">Matin (8h-12h)</option>
+              <option value="apres-midi">Après-midi (13h30-17h15)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-bold mb-2">Message (optionnel)</label>
+          <textarea id="message" name="message" rows="3" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Précisions, marque, modèle..."></textarea>
+        </div>
+        <input type="hidden" name="_subject" value={`Demande - ${sc.service.name} à ${sc.city.name}`} />
+        <div class="text-center">
+          <button type="submit" class="inline-flex items-center gap-3 rounded-xl bg-secondary px-8 py-5 text-lg font-extrabold text-secondary-foreground shadow-cta hover:brightness-105 transition">Envoyer ma demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="py-20 bg-background">
+    <div class="container text-center max-w-2xl">
+      <h2 class="text-3xl md:text-4xl mb-4">Un projet de {sc.service.name.toLowerCase()} à {sc.city.name} ?</h2>
+      <p class="text-muted-foreground text-lg mb-8">Contactez Anthony pour une étude personnalisée et un devis gratuit.</p>
+      <a href={TEL} class="inline-flex items-center gap-3 rounded-xl bg-secondary px-8 py-5 text-lg font-extrabold text-secondary-foreground shadow-cta hover:brightness-105 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        {PHONE}
+      </a>
+    </div>
+  </section>
+
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Service","name":`${sc.service.name} à ${sc.city.name} (${sc.city.code})`,"provider":{"@type":"LocalBusiness","name":"Anthony PRIME","url":"https://www.anthonyprime.fr","telephone":"+33674981599","address":{"@type":"PostalAddress","addressLocality":"Saint-James","addressRegion":"Normandie","postalCode":"50240","addressCountry":"FR"}},"areaServed":`${sc.city.name} (${sc.city.code})`,"description":sc.service.tagline})} />
