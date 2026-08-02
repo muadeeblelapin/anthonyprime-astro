@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     mail($to, $subject, $body, $headers);
 
-    header("Location: /?sent=ok#contact-form");
+    header("Location: https://www.anthonyprime.fr/?sent=ok#contact-form");
     exit;
 }
 ?>
