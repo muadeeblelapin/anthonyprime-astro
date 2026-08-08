@@ -14,7 +14,8 @@ const canonical = `https://www.anthonyprime.fr${path}`
     <meta name="author" content="Anthony PRIME" />
     <link rel="canonical" href={canonical} />
     <link rel="preload" href="/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="/fonts/inter.css" />
+    <link rel="stylesheet" href="/fonts/inter.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/fonts/inter.css" /></noscript>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
