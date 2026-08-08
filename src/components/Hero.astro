@@ -5,7 +5,7 @@ const { title, tagline, emergency } = Astro.props as { title: string; tagline?: 
 const amp = "&";
 ---
 <section class="relative isolate overflow-hidden">
-  <img src="/assets/hero-plumbing.webp" alt="Artisan plombier chauffagiste intervenant sur une chaudière à Saint-James" width="1920" height="1280" class="absolute inset-0 h-full w-full object-cover" />
+  <img src="/assets/hero-plumbing.webp" alt="Artisan plombier chauffagiste intervenant sur une chaudière à Saint-James" width="1920" height="1280" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover" />
   <div class="absolute inset-0 bg-gradient-hero" />
   <div class="container relative py-20 md:py-32 text-primary-foreground">
     <div class="inline-flex items-center gap-2 rounded-full bg-secondary/95 text-secondary-foreground px-4 py-2 text-sm font-bold mb-6">
