@@ -33,9 +33,10 @@ const totalAvis = 9
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {testimonials.map(t => (
         <div class="rounded-2xl border border-border bg-card p-6 shadow-elegant flex flex-col">
-          <div class="flex items-center gap-1 mb-3" aria-label={`${t.note} étoiles sur 5`}>
+          <div class="flex items-center gap-1 mb-3" role="img" aria-label={`${t.note} étoiles sur 5`}>
             {Array.from({ length: 5 }, (_, i) => (
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"

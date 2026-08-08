@@ -32,7 +32,7 @@ const ecoServices = [
       {mainServices.map(s => (
         <a href={`/services/${s.slug}`} class="group rounded-2xl border border-border bg-card p-7 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 block">
           <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-primary-foreground mb-5 group-hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
           </div>
           <h3 class="text-xl text-card-foreground mb-2">{s.title}</h3>
           <p class="text-muted-foreground leading-relaxed">{s.desc}</p>
@@ -46,13 +46,13 @@ const ecoServices = [
         {ecoServices.map(s => (
           <a href={`/services/${s.slug}`} class="group rounded-2xl border border-border bg-card p-7 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 flex flex-col">
             <div class="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-secondary-foreground mb-5 group-hover:scale-110 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={ICON_MAP[s.icon]} /></svg>
             </div>
             <h3 class="text-lg text-card-foreground mb-2">{s.title}</h3>
             <p class="text-muted-foreground leading-relaxed text-sm flex-1">{s.desc}</p>
             <span class="mt-4 inline-flex items-center gap-1 font-bold text-primary group-hover:gap-2 transition-all">
               En savoir plus
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
           </a>
         ))}
