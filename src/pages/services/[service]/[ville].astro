@@ -27,7 +27,7 @@ const cityRealisations = sc.service.realizations.filter(r =>
 const displayRealisations = cityRealisations.length > 0 ? cityRealisations : sc.service.realizations
 ---
 
-<BaseLayout title={sc.title} description={sc.description} path={`/services/${sc.slug}`}>
+<BaseLayout title={sc.title} description={sc.description} path={`/services/${sc.slug}/`}>
   <Fragment slot="header"><Header /></Fragment>
   <Hero title={sc.h1} tagline={sc.service.tagline} emergency={sc.service.emergency} />
   <TrustBar />
