@@ -17,34 +17,47 @@ const SAINT_JAMES = { lat: 48.5233, lng: -1.3242 }
     <p class="mt-3 text-sm text-muted-foreground text-center">Le cercle représente un rayon de 40 km autour de Saint-James. Cliquez pour zoomer.</p>
   </div>
 </section>
-<link rel="stylesheet" href="/vendor/leaflet/leaflet.css" />
 <script>
 (function(){
 var lat = 48.5233, lng = -1.3242, radius = 40000;
-var link = document.createElement('link');
-link.rel = 'stylesheet';
-link.href = '/vendor/leaflet/leaflet.css';
-document.head.appendChild(link);
-var script = document.createElement('script');
-script.src = '/vendor/leaflet/leaflet.js';
-script.onload = function(){
-  var map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 9);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-  L.circle([lat, lng], {
-    radius: radius,
-    color: '#1a7a2e',
-    fillColor: '#1a7a2e',
-    fillOpacity: 0.12,
-    weight: 2,
-    dashArray: '6, 6'
-  }).addTo(map).bindPopup('Rayon de 40 km autour de Saint-James');
-  L.marker([lat, lng]).addTo(map).bindPopup('<strong>Anthony PRIME</strong><br>3, impasse de la Croix-Vincent<br>50240 Saint-James');
-  // Activer le zoom au clic
-  map.on('click', function(){ if(map.getMaxZoom() > map.getZoom()) map.scrollWheelZoom.enable(); });
-};
-document.body.appendChild(script);
+var mapEl = document.getElementById('map');
+if(!mapEl) return;
+var loaded = false;
+function loadMap(){
+  if(loaded) return; loaded = true;
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/vendor/leaflet/leaflet.css';
+  document.head.appendChild(link);
+  var script = document.createElement('script');
+  script.src = '/vendor/leaflet/leaflet.js';
+  script.onload = function(){
+    var map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 9);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    L.circle([lat, lng], {
+      radius: radius,
+      color: '#1a7a2e',
+      fillColor: '#1a7a2e',
+      fillOpacity: 0.12,
+      weight: 2,
+      dashArray: '6, 6'
+    }).addTo(map).bindPopup('Rayon de 40 km autour de Saint-James');
+    L.marker([lat, lng]).addTo(map).bindPopup('<strong>Anthony PRIME</strong><br>3, impasse de la Croix-Vincent<br>50240 Saint-James');
+    // Activer le zoom au clic
+    map.on('click', function(){ if(map.getMaxZoom() > map.getZoom()) map.scrollWheelZoom.enable(); });
+  };
+  document.body.appendChild(script);
+}
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ loadMap(); io.disconnect(); } });
+  }, { rootMargin: '200px' });
+  io.observe(mapEl);
+} else {
+  loadMap();
+}
 })();
 </script>
