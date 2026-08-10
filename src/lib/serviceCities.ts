@@ -8,6 +8,7 @@ export interface ServiceCity {
   title: string
   description: string
   h1: string
+  local: string
 }
 
 // Services à forte valeur ajoutée à décliner par ville
@@ -39,6 +40,7 @@ export function getServiceCityCombinations(): ServiceCity[] {
         title: `${name} à ${cityName} (${city.code}) — Anthony PRIME`,
         description: `${name} à ${cityName} (${city.code}) par Anthony PRIME, artisan RGE basé à Saint-James (50240). Devis gratuit et intervention rapide dans le Sud-Manche et l'Ille-et-Vilaine.`,
         h1: `${name} à ${cityName} et ses environs`,
+        local: city.local,
       })
     }
   }

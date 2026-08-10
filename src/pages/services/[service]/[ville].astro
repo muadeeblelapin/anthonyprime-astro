@@ -6,7 +6,7 @@ import Hero from "../../../components/Hero.astro"
 import TrustBar from "../../../components/TrustBar.astro"
 import RealizationCard from "../../../components/RealizationCard.astro"
 import { getServiceCityCombinations } from "../../../lib/serviceCities"
-import { ICON_MAP, BRANDS } from "../../../lib/services"
+import { ICON_MAP, BRANDS, projetDe } from "../../../lib/services"
 
 export async function getStaticPaths() {
   return getServiceCityCombinations().map(sc => ({
@@ -38,8 +38,8 @@ const displayRealisations = cityRealisations.length > 0 ? cityRealisations : sc.
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={IconPath}/></svg>
           {sc.service.name} à {sc.city.name}
         </p>
-        <h1 class="text-3xl md:text-5xl mb-6">{sc.h1}</h1>
         <p class="text-lg text-muted-foreground leading-relaxed mb-8" set:html={sc.service.description.replace(/\n/g, '<br/>')} />
+        <p class="text-foreground leading-relaxed mb-8">{sc.local}</p>
         <ul class="space-y-3 mb-10">
           {sc.service.bullets.map(b => <li class="flex items-start gap-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span class="text-foreground">{b}</span></li>)}
         </ul>
@@ -76,7 +76,7 @@ const displayRealisations = cityRealisations.length > 0 ? cityRealisations : sc.
     <div class="container max-w-2xl">
       <div class="text-center mb-10">
         <p class="text-primary font-bold uppercase tracking-wider text-sm mb-3">Sans engagement</p>
-        <h2 class="text-3xl md:text-4xl">Un projet de {sc.service.name.toLowerCase()} à {sc.city.name} ?</h2>
+        <h2 class="text-3xl md:text-4xl">Un projet {projetDe(sc.service.name)} à {sc.city.name} ?</h2>
         <p class="mt-4 text-muted-foreground text-lg">Laissez-moi vos coordonnées, je vous contacte pour en discuter.</p>
       </div>
       <form action="https://formspree.io/f/xnjekrrg" method="POST" class="space-y-5">
@@ -133,7 +133,7 @@ const displayRealisations = cityRealisations.length > 0 ? cityRealisations : sc.
 
   <section class="py-20 bg-background">
     <div class="container text-center max-w-2xl">
-      <h2 class="text-3xl md:text-4xl mb-4">Un projet de {sc.service.name.toLowerCase()} à {sc.city.name} ?</h2>
+      <h2 class="text-3xl md:text-4xl mb-4">Un projet {projetDe(sc.service.name)} à {sc.city.name} ?</h2>
       <p class="text-muted-foreground text-lg mb-8">Contactez Anthony pour une étude personnalisée et un devis gratuit.</p>
       <a href={TEL} class="inline-flex items-center gap-3 rounded-xl bg-secondary px-8 py-5 text-lg font-extrabold text-secondary-foreground shadow-cta hover:brightness-105 transition">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
