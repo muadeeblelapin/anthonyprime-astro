@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css"
-export interface Props { title: string; description: string; path?: string; ogImage?: string }
-const { title, description, path = "/", ogImage = "/og-image.jpg" } = Astro.props
+export interface Props { title: string; description: string; path?: string; ogImage?: string; noindex?: boolean }
+const { title, description, path = "/", ogImage = "/og-image.jpg", noindex = false } = Astro.props
 const canonical = `https://www.anthonyprime.fr${path}`
 ---
 <!DOCTYPE html>
@@ -9,6 +9,7 @@ const canonical = `https://www.anthonyprime.fr${path}`
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Anthony PRIME" />
