@@ -10,7 +10,36 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+# Bots IA : autorisés pour la recherche (retrieval), pas d'entraînement
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Préférences de contenu pour les IA (Content Signals)
+Content-Signal: search=yes
+Content-Signal: ai-input=yes
 
 Sitemap: https://anthonyprime.fr/sitemap.xml
