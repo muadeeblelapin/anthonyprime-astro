@@ -22,3 +22,11 @@
 #
 # 4) Créer /etc/nginx/conf.d/markdown-negotiation.conf (voir deploy/markdown-negotiation.conf)
 #    puis : sudo nginx -t && sudo systemctl reload nginx
+#
+# 5) Link headers (RFC 8288) — ajouter dans le server www, avant "root" :
+#        add_header Link '<https://www.anthonyprime.fr/llms.txt>; rel="llms-txt", <https://www.anthonyprime.fr/sitemap.xml>; rel="sitemap"' always;
+#    ⚠️ Utiliser des guillemets SIMPLES pour la valeur (les doubles internes
+#    ne sont pas échappables proprement via sed/python multi-couches).
+#    ⚠️ Ne PAS mettre dans conf.d/ : les add_header du niveau http sont
+#    écrasés par ceux du bloc server.
+
