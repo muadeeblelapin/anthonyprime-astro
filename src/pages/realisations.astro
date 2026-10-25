@@ -1,0 +1,228 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import { SERVICES } from "../lib/services"
+
+const PHONE = "06 74 98 15 99"
+const TEL = "tel:+336****1599"
+
+// Ordre éditorial : les salles de bains d'abord, puis les autres métiers.
+const ORDER = [
+  "renovation-salle-de-bains",
+  "plomberie",
+  "chauffage",
+  "pompe-a-chaleur",
+  "climatisation",
+  "electricite",
+  "depannage-urgence",
+]
+
+const GROUPS: Record<string, string> = {
+  "renovation-salle-de-bains": "salle-de-bains",
+  plomberie: "plomberie",
+  chauffage: "chauffage",
+  "pompe-a-chaleur": "chauffage",
+  climatisation: "chauffage",
+  electricite: "electricite",
+  "depannage-urgence": "depannage",
+}
+
+// Un même chantier peut être référencé par plusieurs services : on ne l'affiche qu'une fois.
+const seen = new Set<string>()
+const items: { service: any; r: any; group: string }[] = []
+for (const slug of ORDER) {
+  const service = SERVICES[slug]
+  if (!service) continue
+  for (const r of service.realizations) {
+    const key = `${r.title}|${r.location}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    items.push({ service, r, group: GROUPS[slug] || "autre" })
+  }
+}
+
+const filters = [
+  { id: "tout", label: "Tout" },
+  { id: "salle-de-bains", label: "Salles de bains" },
+  { id: "plomberie", label: "Plomberie" },
+  { id: "chauffage", label: "Chauffage & PAC" },
+  { id: "electricite", label: "Électricité" },
+  { id: "depannage", label: "Dépannage" },
+]
+---
+
+<BaseLayout
+  title="Réalisations — chantiers de plomberie, salle de bains et chauffage | Anthony PRIME"
+  description="Photos de chantiers réalisés par Anthony PRIME, artisan à Saint-James (50) : rénovations de salles de bains, salles de bains PMR, pompes à chaleur, électricité. Sud-Manche et Ille-et-Vilaine."
+  path="/realisations/"
+>
+  <Fragment slot="header"><Header /></Fragment>
+
+  <section class="bg-primary text-primary-foreground py-16 md:py-20">
+    <div class="container">
+      <p class="text-secondary font-bold uppercase tracking-wider text-sm mb-3">Réalisations</p>
+      <h1 class="text-3xl md:text-5xl font-black mb-4">Mes chantiers en images</h1>
+      <p class="text-primary-foreground/90 text-lg max-w-2xl">
+        Salles de bains, plomberie, chauffage et électricité : {items.length} chantiers réellement
+        réalisés chez des particuliers du Sud-Manche et d'Ille-et-Vilaine.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 bg-background">
+    <div class="container">
+      <div id="filtres" class="flex flex-wrap gap-2 mb-10" role="group" aria-label="Filtrer les réalisations par métier">
+        {filters.map((f, i) => (
+          <button
+            type="button"
+            data-filter={f.id}
+            class:list={[
+              "rounded-full px-4 py-2 text-sm font-bold border transition",
+              i === 0
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card text-card-foreground border-border hover:border-primary hover:text-primary",
+            ]}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      <div id="grille" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map(({ service, r, group }) => {
+          const srcs = r.images.map((i: any) => i.fullImage).join(",")
+          const caps = r.images.map((i: any) => i.caption || "").join("|")
+          return (
+            <article data-group={group} class="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-elegant transition-all duration-300 flex flex-col">
+              <button
+                type="button"
+                class="relative block w-full aspect-[4/3] bg-muted overflow-hidden cursor-zoom-in"
+                onclick={`openLB('${srcs}','${caps}')`}
+                aria-label={`Agrandir : ${r.title} à ${r.location}`}
+              >
+                <img
+                  src={r.images[0].thumbnail}
+                  alt={`${r.title} — ${r.location}`}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                {r.images.length > 1 && (
+                  <span class="absolute top-3 right-3 rounded-full bg-black/65 text-white text-xs font-bold px-2.5 py-1">
+                    {r.images.length} photos
+                  </span>
+                )}
+              </button>
+              <div class="p-5 flex-1 flex flex-col">
+                <p class="text-xs font-bold uppercase tracking-wider text-primary mb-1">{service.name}</p>
+                <h2 class="text-lg text-card-foreground leading-tight">{r.title}</h2>
+                <p class="text-sm text-muted-foreground mt-1 mb-4 inline-flex items-center gap-1">
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  {r.location}
+                </p>
+                <a
+                  href={`/services/${service.slug}/`}
+                  class="mt-auto inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline"
+                >
+                  Voir le service
+                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+
+      <p id="vide" class="hidden text-center text-muted-foreground py-12">Aucune réalisation dans cette catégorie pour le moment.</p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-muted">
+    <div class="container text-center max-w-2xl">
+      <h2 class="text-3xl md:text-4xl mb-4">Un projet similaire ?</h2>
+      <p class="text-muted-foreground text-lg mb-8">
+        Devis gratuit et sans engagement, dans un rayon de 40 km autour de Saint-James.
+      </p>
+      <a href={TEL} class="inline-flex items-center gap-3 rounded-xl bg-secondary px-8 py-5 text-lg font-extrabold text-secondary-foreground shadow-cta hover:brightness-105 transition">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        {PHONE}
+      </a>
+    </div>
+  </section>
+
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+
+<script is:inline>
+  // Filtres de la galerie — sans dépendance, sans rechargement
+  (function () {
+    var boutons = document.querySelectorAll("[data-filter]");
+    var cartes = document.querySelectorAll("#grille article");
+    var vide = document.getElementById("vide");
+    if (!boutons.length || !cartes.length) return;
+
+    function appliquer(filtre) {
+      var visibles = 0;
+      cartes.forEach(function (c) {
+        var ok = filtre === "tout" || c.getAttribute("data-group") === filtre;
+        c.style.display = ok ? "" : "none";
+        if (ok) visibles++;
+      });
+      if (vide) vide.classList.toggle("hidden", visibles > 0);
+      boutons.forEach(function (b) {
+        var actif = b.getAttribute("data-filter") === filtre;
+        b.className =
+          "rounded-full px-4 py-2 text-sm font-bold border transition " +
+          (actif
+            ? "bg-primary text-primary-foreground border-primary"
+            : "bg-card text-card-foreground border-border hover:border-primary hover:text-primary");
+        b.setAttribute("aria-pressed", actif ? "true" : "false");
+      });
+    }
+
+    boutons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        appliquer(b.getAttribute("data-filter"));
+      });
+    });
+
+    // Lien direct depuis les pages services : /realisations/#salle-de-bains
+    var cible = (location.hash || "").replace("#", "");
+    if (cible && document.querySelector('[data-filter="' + cible + '"]')) {
+      appliquer(cible);
+      var barre = document.getElementById("filtres");
+      if (barre) {
+        setTimeout(function () {
+          window.scrollTo(0, barre.getBoundingClientRect().top + window.scrollY - 80);
+        }, 50);
+      }
+    }
+  })();
+</script>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Réalisations — Anthony PRIME",
+  url: "https://www.anthonyprime.fr/realisations/",
+  about: {
+    "@type": "LocalBusiness",
+    name: "Anthony PRIME",
+    url: "https://www.anthonyprime.fr",
+    telephone: "+336****1599",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Saint-James",
+      addressRegion: "Normandie",
+      postalCode: "50240",
+      addressCountry: "FR",
+    },
+  },
+  hasPart: items.slice(0, 20).map(({ r, service }) => ({
+    "@type": "CreativeWork",
+    name: `${r.title} — ${r.location}`,
+    image: `https://www.anthonyprime.fr${r.images[0].fullImage}`,
+    about: service.name,
+  })),
+})} />

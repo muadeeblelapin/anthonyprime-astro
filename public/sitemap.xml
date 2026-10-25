@@ -6,6 +6,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://www.anthonyprime.fr/realisations/</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://www.anthonyprime.fr/plombier-antrain/</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
